@@ -57,7 +57,7 @@ for v in pixel modern; do
     case $variant in
       transparent) svg_suffix=""; bg="none" ;;
       on-dark)     svg_suffix="-on-dark"; bg="#181616" ;;
-      on-light)    svg_suffix="-on-light"; bg="#f5f1e8" ;;
+      on-light)    svg_suffix="-on-light"; bg="none" ;;
     esac
 
     src_stacked=$BRAND/lockup/${v}/stacked${svg_suffix}.svg
