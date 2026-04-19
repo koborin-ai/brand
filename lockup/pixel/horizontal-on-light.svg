@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 60" width="520" height="120" style="image-rendering: pixelated; image-rendering: crisp-edges;">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500&amp;display=swap');
+      .wm { font-family: 'Pixelify Sans', monospace; font-weight: 500; }
+    </style>
+  </defs>
+  <rect width="260" height="60" fill="#f5f1e8"/>
+  <g transform="translate(6, 6) scale(3)" shape-rendering="crispEdges">
+    <g fill="#a8703a">
+      <rect x="13" y="7" width="1" height="1"/>
+      <rect x="13" y="8" width="1" height="1"/>
+    </g>
+    <g fill="#2a3a4a">
+      <rect x="11" y="3"  width="1" height="1"/>
+      <rect x="12" y="3"  width="1" height="1"/>
+      <rect x="11" y="4"  width="1" height="1"/>
+      <rect x="12" y="4"  width="1" height="1"/>
+      <rect x="7"  y="2"  width="1" height="1" opacity="0.78"/>
+      <rect x="8"  y="2"  width="1" height="1" opacity="0.78"/>
+      <rect x="3"  y="3"  width="1" height="1" opacity="0.62"/>
+      <rect x="4"  y="3"  width="1" height="1" opacity="0.62"/>
+      <rect x="2"  y="7"  width="1" height="1" opacity="0.5"/>
+      <rect x="2"  y="8"  width="1" height="1" opacity="0.5"/>
+      <rect x="3"  y="11" width="1" height="1" opacity="0.4"/>
+      <rect x="4"  y="11" width="1" height="1" opacity="0.4"/>
+      <rect x="7"  y="13" width="1" height="1" opacity="0.32"/>
+      <rect x="8"  y="13" width="1" height="1" opacity="0.32"/>
+      <rect x="11" y="11" width="1" height="1" opacity="0.25"/>
+      <rect x="12" y="11" width="1" height="1" opacity="0.25"/>
+      <rect x="13" y="6"  width="1" height="1" opacity="0.5"/>
+      <rect x="13" y="9"  width="1" height="1" opacity="0.5"/>
+    </g>
+  </g>
+  <text x="68" y="40" class="wm" font-size="32" fill="#2a3a4a">koborin<tspan fill="#a8703a">.ai</tspan></text>
+</svg>
