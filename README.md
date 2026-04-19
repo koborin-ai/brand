@@ -2,8 +2,8 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./lockup/pixel/png/on-dark/stacked@2x.png">
-    <img src="./lockup/pixel/png/on-light/stacked@2x.png" alt="koborin.ai" width="320">
+    <source media="(prefers-color-scheme: dark)" srcset="./lockup/pixel/png/transparent/stacked@2x.png">
+    <img src="./lockup/pixel/png/on-light/stacked@2x.png" alt="koborin.ai">
   </picture>
 </p>
 
