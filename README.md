@@ -9,7 +9,7 @@ The mark is an arch, a detached left cursor bar, and a square dot at the baselin
 <!-- brand:hero -->
 <picture>
 <source media="(prefers-color-scheme: dark)" srcset="lockup/lockup-dark-256.png">
-<img src="lockup/lockup-light-256.png" alt="koborin.ai">
+<img src="lockup/lockup-light-256.png" alt="koborin.ai" width="480">
 </picture>
 <!-- /brand:hero -->
 
@@ -40,7 +40,7 @@ The wordmark is 13 px. It uses the muted role.
 
 ## Voice
 
-Quiet, honest, with retro/gadget playfulness. Co-creative — show work in progress, make the loop visible. Write outward-facing copy in English; single-character kanji (巡 / 環 / 還) used sparingly as accent.
+Quiet, honest, retro-playful, co-creative.
 
 ## Assets
 

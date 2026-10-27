@@ -192,7 +192,7 @@ function hero(): string {
   return [
     "<picture>",
     `<source media="(prefers-color-scheme: dark)" srcset="${dark}">`,
-    `<img src="${light}" alt="koborin.ai">`,
+    `<img src="${light}" alt="koborin.ai" width="480">`,
     "</picture>",
   ].join("\n");
 }
