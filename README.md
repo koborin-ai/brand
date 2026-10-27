@@ -1,75 +1,100 @@
-# brand
+# koborin-ai
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./lockup/pixel/png/transparent/stacked@2x.png">
-    <img src="./lockup/pixel/png/on-light/stacked@2x.png" alt="koborin.ai" width="480">
-  </picture>
-</p>
+`koborin-ai` is a personal org rooted in a way of living: shaping oneself through repeated cycles of *hypothesize → verify → return*. Reading, music, and warm baths keep the loop steady. Spinning the loop together with the people I care about and with AI, life becomes richer.
 
-The Single Source of Truth for `koborin-ai`'s visual identity.
+This repository is the visual identity for `koborin-ai`. It holds the icon, the lockups, the palette, the typography, and the voice.
 
-A reference point for myself, AI, and the people who collaborate with this org. Contains icon assets, lockups, color palette, typography, and tone & voice — all derived from the philosophy below.
+The mark is an arch, a detached left cursor bar, and a square dot at the baseline on the right. Nozomi adopted it on 2026-10-28. The mark uses the accent color. The favicon and the app icon are the dark tile in every theme.
 
-## Philosophy
+<!-- brand:hero -->
+<picture>
+<source media="(prefers-color-scheme: dark)" srcset="lockup/lockup-dark-256.png">
+<img src="lockup/lockup-light-256.png" alt="koborin.ai">
+</picture>
+<!-- /brand:hero -->
 
-`koborin-ai` is a personal org rooted in a way of living: shaping oneself through repeated cycles of *hypothesize → verify → return*. Reading, music, and warm baths keep the loop steady, while I myself am a single trembling light — carrying delicacy and unsteadiness. Spinning the loop together with the people I care about and with AI, life becomes richer — a small place where light orbits quietly, still pulsing in this very moment.
+## Palette
 
-## 8 lights orbiting
+<!-- brand:palette -->
+| Role | Dark | Light |
+| --- | --- | --- |
+| bg | `#0b0d12` | `#faf9f6` |
+| fg | `#eceae5` | `#16161a` |
+| accent | `#d5dae1` | `#4a5260` |
+| muted | `#eceae56b` | `#16161a73` |
 
-The icon is a single picture of the cycle.
+The mark uses the accent color. The wordmark uses the muted color. The tile uses the dark theme.
+<!-- /brand:palette -->
 
-The **8 nodes** are the steady inputs that fuel each turn of *hypothesize → verify → return*: code, music, reading, warm baths, dialogue, and the people I share these with. They sit in a closed orbit because the cycle is closed — each loop hands off to the next.
+## Typography
 
-The **gold node** is me, mid-cycle. While the 8 hold the structure, the gold one moves: brighter or dimmer depending on which question I'm sitting with, never quite settling. It's the present moment of the loop — the only part that pulses.
+<!-- brand:typography -->
+| Face | Family | Weights | Stack |
+| --- | --- | --- | --- |
+| body | Geist | 400 | `Geist, Noto Sans JP, sans-serif` |
+| wordmark | Geist Mono | 500 | `Geist Mono, Noto Sans JP, ui-monospace, monospace` |
+| japanese | Noto Sans JP | 400, 500 | `Noto Sans JP` |
 
-## Structure
+The wordmark is 13 px. It uses the muted role.
+<!-- /brand:typography -->
 
-```text
-brand/
-├── icon/                 # Master icon (3 variants × multiple PNG sizes)
-│   ├── icon.svg          # transparent master
-│   ├── icon-on-dark.svg
-│   ├── icon-on-light.svg
-│   └── png/{transparent,on-dark,on-light}/{16..1024}.png
-├── lockup/               # Icon + wordmark
-│   ├── pixel/            # A primary (Pixelify Sans)
-│   └── modern/           # B secondary (Geist Sans)
-├── preview/              # Browser-viewable live preview
-├── process/              # Exploration archive: rejected variants & lessons
-├── CLAUDE.md             # Context for LLMs
-└── .claude/skills/       # Project-local skill: render-brand
-```
+## Voice
 
-## Quick reference
+Quiet, honest, with retro/gadget playfulness. Co-creative — show work in progress, make the loop visible. Write outward-facing copy in English; single-character kanji (巡 / 環 / 還) used sparingly as accent.
 
-### Colors
+## Assets
 
-- Primary `#7fb4ca` crystalBlue / Bg `#181616` (dark) / `#f5f1e8` (light)
-- Accent `#c4b28a` gold (on dark) / `#a8703a` copper (on light)
+<!-- brand:assets -->
+### `mark`
 
-### Fonts
+| Path | Picture | Size |
+| --- | --- | --- |
+| `mark/mark-dark.svg` | mark, for dark surfaces | SVG |
+| `mark/mark-dark-512.png` | mark, for dark surfaces | 512 px square |
+| `mark/mark-light.svg` | mark, for light surfaces | SVG |
+| `mark/mark-light-512.png` | mark, for light surfaces | 512 px square |
 
-- A primary: **Pixelify Sans** — face, hero, OG, avatar
-- B secondary: **Geist Sans** — body, UI, formal contexts
+### `lockup`
 
-### Voice
+| Path | Picture | Size |
+| --- | --- | --- |
+| `lockup/lockup-dark.svg` | lockup, for dark surfaces | SVG |
+| `lockup/lockup-dark-256.png` | lockup, for dark surfaces | 256 px high |
+| `lockup/lockup-light.svg` | lockup, for light surfaces | SVG |
+| `lockup/lockup-light-256.png` | lockup, for light surfaces | 256 px high |
 
-- Quiet, honest, retro-playful, co-creative
+### `icon`
+
+| Path | Picture | Size |
+| --- | --- | --- |
+| `icon/favicon.svg` | app icon, dark tile | SVG |
+| `icon/favicon.ico` | app icon, dark tile | 16, 32, and 48 px |
+| `icon/apple-touch-icon.png` | app icon, dark tile | 180 px square |
+| `icon/icon-512.png` | app icon, dark tile | 512 px square |
+
+### `avatar`
+
+| Path | Picture | Size |
+| --- | --- | --- |
+| `avatar/avatar-1024.png` | avatar, dark square | 1024 px square |
+
+### `ogp`
+
+| Path | Picture | Size |
+| --- | --- | --- |
+| `ogp/default.png` | Open Graph image, dark | 1200 by 630 px |
+<!-- /brand:assets -->
 
 ## Usage
 
-Live preview:
+From the repository root, run:
 
-```bash
-open preview/index.html
+```sh
+npm ci
+node --run build
+node --run check
 ```
 
-Regenerate PNGs (auto via the `render-brand` skill, or directly):
+`node --run build` writes `mark/`, `lockup/`, `icon/`, `avatar/`, `ogp/`, and `preview/`. It deletes a file in those directories that the generator does not list. `node --run check` prints the diff and writes nothing.
 
-```bash
-bash .claude/skills/render-brand/scripts/render-icons.sh
-bash .claude/skills/render-brand/scripts/render-lockups.sh
-```
-
-For LLM context, include [`CLAUDE.md`](./CLAUDE.md). The `render-brand` skill is auto-discovered from `.claude/skills/`.
+`archive/pixel-ring/` keeps the retired pixel-ring files. `process/` is the log of studies that were not adopted.
