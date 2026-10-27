@@ -1,5 +1,3 @@
-/** Brand facts. The only file a designer edits. Imports nothing. */
-
 export type Theme = "dark" | "light";
 export const THEMES: readonly Theme[] = ["dark", "light"];
 
@@ -12,7 +10,6 @@ export const PALETTE = {
   light: { bg: "#faf9f6", fg: "#16161a", accent: "#4a5260", muted: "#16161a73" },
 } as const satisfies Record<Theme, Record<Role, CssHex>>;
 
-/** Favicon, apple touch, and the app icon use the dark tile in every theme. */
 export const TILE_THEME = "dark" satisfies Theme;
 
 type Face = {
@@ -42,7 +39,6 @@ export const WORDMARK = {
   fontFile: "fonts/geist-mono/GeistMono-Medium.ttf",
 } as const;
 
-/** Source markup. Only the tokens ACCENT and TILE are replaced. */
 export const MARK = {
   size: 32,
   body:
@@ -59,7 +55,6 @@ export const LAYOUT = {
     marginEm: 0.25,
     intrinsicEmPx: 32,
   },
-  /** Grid units outside the 32 tile. A circle crop would clip the stem without this pad. */
   avatarPad: 4,
   og: { width: 1200, height: 630, lockupWidthRatio: 0.6 },
 } as const;

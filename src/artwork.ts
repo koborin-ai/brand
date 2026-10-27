@@ -170,7 +170,6 @@ function avatarScene(): Scene {
     viewBox: { x: origin, y: origin, width: side, height: side },
     widthPx: side,
     heightPx: side,
-    // No rx. The platform mask supplies the corner.
     body:
       `<rect x="${formatNum(origin)}" y="${formatNum(origin)}" width="${formatNum(side)}" height="${formatNum(side)}" fill="${PALETTE[TILE_THEME].bg}"/>` +
       markIn(TILE_THEME),

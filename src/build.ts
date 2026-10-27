@@ -101,7 +101,6 @@ async function apply(root: URL, tree: DesiredTree, drift: readonly Drift[]): Pro
     }
     const bytes = tree.files.get(entry.path);
     if (bytes === undefined) throw new Error(`missing bytes for ${entry.path}`);
-    // A torn write is an update on the next diff, so this writes straight to the path.
     await mkdir(path.dirname(target), { recursive: true });
     await writeFile(target, bytes);
   }

@@ -355,7 +355,6 @@ function onDarkGround(picture: Picture): boolean {
     case "app-icon":
     case "avatar":
     case "og":
-      // The tile is opaque and dark. A light surround keeps the rounded corners visible.
       return false;
     default: {
       const _exhaustive: never = picture;
