@@ -1,226 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>koborin-ai · brand preview</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;700&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>koborin.ai</title>
+<link rel="icon" href="../icon/favicon.svg">
 <style>
-  body {
-    margin: 0;
-    padding: 48px 32px;
-    background: #0d0c0c;
-    color: #c5c9c5;
-    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
-  }
-  h1 {
-    font-weight: 400;
-    font-size: 18px;
-    color: #7fb4ca;
-    letter-spacing: 0.08em;
-    margin: 0 0 8px;
-  }
-  p.lead {
-    color: #737c73;
-    margin: 0 0 40px;
-    font-size: 13px;
-  }
-  h2 {
-    font-weight: 400;
-    font-size: 14px;
-    color: #7fb4ca;
-    letter-spacing: 0.08em;
-    margin: 56px 0 16px;
-    text-transform: uppercase;
-  }
-  .card {
-    background: #181616;
-    border: 1px solid #2a2727;
-    border-radius: 12px;
-    padding: 32px;
-    margin-bottom: 24px;
-  }
-  .card.light-bg {
-    background: #f5f1e8;
-    color: #2a3a4a;
-  }
-  .card .label {
-    font-size: 11px;
-    color: #54616a;
-    letter-spacing: 0.1em;
-    margin-bottom: 24px;
-    font-family: "Geist", monospace;
-  }
-  .card.light-bg .label {
-    color: #8a7e6a;
-  }
-  .icon-row {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-    flex-wrap: wrap;
-  }
-  .icon-row img {
-    image-rendering: pixelated;
-  }
-  .icon-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-  }
-  .icon-block .size {
-    font-size: 10px;
-    color: #54616a;
-    font-family: "Geist", monospace;
-  }
-  .light-bg .icon-block .size { color: #8a7e6a; }
-
-  .lockup-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-  .lockup-row {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 16px 0;
-    border-bottom: 1px dashed #2a2727;
-  }
-  .lockup-row:last-child { border-bottom: none; }
-  .lockup-row img {
-    image-rendering: pixelated;
-    flex-shrink: 0;
-  }
-  .lockup-row .size-tag {
-    font-size: 10px;
-    color: #54616a;
-    width: 60px;
-    font-family: "Geist", monospace;
-  }
-  .text-pixel {
-    font-family: "Pixelify Sans", monospace;
-    color: #c5c9c5;
-    font-weight: 500;
-    line-height: 1;
-  }
-  .text-modern {
-    font-family: "Geist", -apple-system, sans-serif;
-    color: #c5c9c5;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1;
-  }
-  .accent { color: #c4b28a; }
-  .stacked {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    padding: 32px 0;
-    border-top: 1px dashed #2a2727;
-    margin-top: 24px;
-  }
-  .stacked-label {
-    font-size: 10px;
-    color: #54616a;
-    font-family: "Geist", monospace;
-    margin-bottom: 8px;
-  }
+* { box-sizing: border-box; }
+body { margin: 0; background: #0b0d12; color: #eceae5; font: 14px/1.45 Geist, "Noto Sans JP", sans-serif; }
+main { padding: 28px 32px 40px; display: grid; gap: 20px; }
+h1, h2 { font-weight: 500; margin: 0; }
+h1 { font-size: 15px; }
+h2 { font-size: 12px; }
+section { display: grid; gap: 12px; padding: 16px; }
+.light { background: #faf9f6; color: #16161a; }
+.row, .swatches { display: flex; flex-wrap: wrap; gap: 16px; align-items: end; }
+figure { margin: 0; display: flex; flex-wrap: wrap; align-items: end; gap: 8px 10px; }
+figcaption { flex-basis: 100%; }
+figcaption { font: 11px/1.3 "Geist Mono", "Noto Sans JP", ui-monospace, monospace; }
+.dark figcaption { color: #eceae56b; }
+.light figcaption { color: #16161a73; }
+.swatch { display: grid; grid-template-columns: 28px auto; gap: 8px; align-items: center; font: 11px/1.3 "Geist Mono", "Noto Sans JP", ui-monospace, monospace; }
+.chip { width: 28px; height: 28px; display: block; box-shadow: inset 0 0 0 1px currentColor; }
+img { display: block; }
+img.scale { height: 96px; width: auto; }
+img.lockup { height: 72px; width: auto; }
+img.avatar { height: 140px; width: auto; }
+img.og { width: min(100%, 760px); height: auto; }
 </style>
 </head>
 <body>
-  <h1>koborin-ai · brand preview</h1>
-  <p class="lead">Live preview of icon variants and lockups. Reference for README / hero / OG / favicon use.</p>
-
-  <h2>icon · variants</h2>
-
-  <div class="card">
-    <div class="label">icon.svg (transparent master) · on dark page</div>
-    <div class="icon-row">
-      <div class="icon-block"><img src="../icon/icon.svg" width="128" height="128"><div class="size">128</div></div>
-      <div class="icon-block"><img src="../icon/icon.svg" width="64" height="64"><div class="size">64</div></div>
-      <div class="icon-block"><img src="../icon/icon.svg" width="32" height="32"><div class="size">32</div></div>
-      <div class="icon-block"><img src="../icon/icon.svg" width="16" height="16"><div class="size">16</div></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="label">icon-on-dark.svg (with dark fill) · for avatar / OG</div>
-    <div class="icon-row">
-      <div class="icon-block"><img src="../icon/icon-on-dark.svg" width="128" height="128"><div class="size">128</div></div>
-      <div class="icon-block"><img src="../icon/icon-on-dark.svg" width="64" height="64"><div class="size">64</div></div>
-      <div class="icon-block"><img src="../icon/icon-on-dark.svg" width="32" height="32"><div class="size">32</div></div>
-      <div class="icon-block"><img src="../icon/icon-on-dark.svg" width="16" height="16"><div class="size">16</div></div>
-    </div>
-  </div>
-
-  <div class="card light-bg">
-    <div class="label">icon-on-light.svg · for light pages / print / media</div>
-    <div class="icon-row">
-      <div class="icon-block"><img src="../icon/icon-on-light.svg" width="128" height="128"><div class="size">128</div></div>
-      <div class="icon-block"><img src="../icon/icon-on-light.svg" width="64" height="64"><div class="size">64</div></div>
-      <div class="icon-block"><img src="../icon/icon-on-light.svg" width="32" height="32"><div class="size">32</div></div>
-      <div class="icon-block"><img src="../icon/icon-on-light.svg" width="16" height="16"><div class="size">16</div></div>
-    </div>
-  </div>
-
-  <h2>lockup · A primary (Pixelify) / B secondary (Geist)</h2>
-
-  <div class="lockup-grid">
-    <div class="card">
-      <div class="label">A · Pixelify Sans (brand face)</div>
-
-      <div class="lockup-row">
-        <span class="size-tag">hero</span>
-        <img src="../icon/icon.svg" width="96" height="96">
-        <span class="text-pixel" style="font-size: 56px;">koborin<span class="accent">.ai</span></span>
-      </div>
-      <div class="lockup-row">
-        <span class="size-tag">header</span>
-        <img src="../icon/icon.svg" width="48" height="48">
-        <span class="text-pixel" style="font-size: 28px;">koborin<span class="accent">.ai</span></span>
-      </div>
-      <div class="lockup-row">
-        <span class="size-tag">footer</span>
-        <img src="../icon/icon.svg" width="32" height="32">
-        <span class="text-pixel" style="font-size: 18px;">koborin<span class="accent">.ai</span></span>
-      </div>
-
-      <div class="stacked">
-        <div class="stacked-label">stacked (hero / OG)</div>
-        <img src="../icon/icon.svg" width="128" height="128">
-        <span class="text-pixel" style="font-size: 40px;">koborin<span class="accent">.ai</span></span>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="label">B · Geist Sans (UI voice)</div>
-
-      <div class="lockup-row">
-        <span class="size-tag">hero</span>
-        <img src="../icon/icon.svg" width="96" height="96">
-        <span class="text-modern" style="font-size: 52px;">koborin<span class="accent">.ai</span></span>
-      </div>
-      <div class="lockup-row">
-        <span class="size-tag">header</span>
-        <img src="../icon/icon.svg" width="48" height="48">
-        <span class="text-modern" style="font-size: 26px;">koborin<span class="accent">.ai</span></span>
-      </div>
-      <div class="lockup-row">
-        <span class="size-tag">footer</span>
-        <img src="../icon/icon.svg" width="32" height="32">
-        <span class="text-modern" style="font-size: 16px;">koborin<span class="accent">.ai</span></span>
-      </div>
-
-      <div class="stacked">
-        <div class="stacked-label">stacked (hero / OG)</div>
-        <img src="../icon/icon.svg" width="128" height="128">
-        <span class="text-modern" style="font-size: 38px;">koborin<span class="accent">.ai</span></span>
-      </div>
-    </div>
-  </div>
+<main>
+<h1>koborin.ai</h1>
+<section class="dark">
+<h2>Dark</h2>
+<div class="swatches"><div class="swatch"><span class="chip" style="background:#0b0d12"></span><span>bg #0b0d12</span></div><div class="swatch"><span class="chip" style="background:#eceae5"></span><span>fg #eceae5</span></div><div class="swatch"><span class="chip" style="background:#d5dae1"></span><span>accent #d5dae1</span></div><div class="swatch"><span class="chip" style="background:#eceae56b"></span><span>muted #eceae56b</span></div></div>
+<div class="row">
+<figure>
+<img class="scale" src="../mark/mark-dark.svg" alt="mark/mark-dark.svg">
+<figcaption>mark/mark-dark.svg</figcaption>
+</figure>
+<figure>
+<img class="scale" src="../mark/mark-dark-512.png" alt="mark/mark-dark-512.png">
+<figcaption>mark/mark-dark-512.png</figcaption>
+</figure>
+<figure>
+<img class="lockup" src="../lockup/lockup-dark.svg" alt="lockup/lockup-dark.svg">
+<figcaption>lockup/lockup-dark.svg</figcaption>
+</figure>
+<figure>
+<img class="lockup" src="../lockup/lockup-dark-256.png" alt="lockup/lockup-dark-256.png">
+<figcaption>lockup/lockup-dark-256.png</figcaption>
+</figure>
+</div>
+</section>
+<section class="light">
+<h2>Light</h2>
+<div class="swatches"><div class="swatch"><span class="chip" style="background:#faf9f6"></span><span>bg #faf9f6</span></div><div class="swatch"><span class="chip" style="background:#16161a"></span><span>fg #16161a</span></div><div class="swatch"><span class="chip" style="background:#4a5260"></span><span>accent #4a5260</span></div><div class="swatch"><span class="chip" style="background:#16161a73"></span><span>muted #16161a73</span></div></div>
+<div class="row">
+<figure>
+<img class="scale" src="../mark/mark-light.svg" alt="mark/mark-light.svg">
+<figcaption>mark/mark-light.svg</figcaption>
+</figure>
+<figure>
+<img class="scale" src="../mark/mark-light-512.png" alt="mark/mark-light-512.png">
+<figcaption>mark/mark-light-512.png</figcaption>
+</figure>
+<figure>
+<img class="lockup" src="../lockup/lockup-light.svg" alt="lockup/lockup-light.svg">
+<figcaption>lockup/lockup-light.svg</figcaption>
+</figure>
+<figure>
+<img class="lockup" src="../lockup/lockup-light-256.png" alt="lockup/lockup-light-256.png">
+<figcaption>lockup/lockup-light-256.png</figcaption>
+</figure>
+<figure>
+<img src="../icon/favicon.svg" alt="icon/favicon.svg at 16" width="16" height="16">
+<img src="../icon/favicon.svg" alt="icon/favicon.svg at 32" width="32" height="32">
+<img src="../icon/favicon.svg" alt="icon/favicon.svg at 48" width="48" height="48">
+<figcaption>icon/favicon.svg at 16, 32, and 48</figcaption>
+</figure>
+<figure>
+<img src="../icon/favicon.ico" alt="icon/favicon.ico" width="48" height="48">
+<figcaption>icon/favicon.ico</figcaption>
+</figure>
+<figure>
+<img class="scale" src="../icon/apple-touch-icon.png" alt="icon/apple-touch-icon.png">
+<figcaption>icon/apple-touch-icon.png</figcaption>
+</figure>
+<figure>
+<img class="scale" src="../icon/icon-512.png" alt="icon/icon-512.png">
+<figcaption>icon/icon-512.png</figcaption>
+</figure>
+<figure>
+<img class="avatar" src="../avatar/avatar-1024.png" alt="avatar/avatar-1024.png">
+<figcaption>avatar/avatar-1024.png</figcaption>
+</figure>
+<figure>
+<img class="og" src="../ogp/default.png" alt="ogp/default.png">
+<figcaption>ogp/default.png</figcaption>
+</figure>
+</div>
+</section>
+</main>
 </body>
 </html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>koborin-ai · brand preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;700&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    padding: 48px 32px;
+    background: #0d0c0c;
+    color: #c5c9c5;
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  h1 {
+    font-weight: 400;
+    font-size: 18px;
+    color: #7fb4ca;
+    letter-spacing: 0.08em;
+    margin: 0 0 8px;
+  }
+  p.lead {
+    color: #737c73;
+    margin: 0 0 40px;
+    font-size: 13px;
+  }
+  h2 {
+    font-weight: 400;
+    font-size: 14px;
+    color: #7fb4ca;
+    letter-spacing: 0.08em;
+    margin: 56px 0 16px;
+    text-transform: uppercase;
+  }
+  .card {
+    background: #181616;
+    border: 1px solid #2a2727;
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+  .card.light-bg {
+    background: #f5f1e8;
+    color: #2a3a4a;
+  }
+  .card .label {
+    font-size: 11px;
+    color: #54616a;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+    font-family: "Geist", monospace;
+  }
+  .card.light-bg .label {
+    color: #8a7e6a;
+  }
+  .icon-row {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .icon-row img {
+    image-rendering: pixelated;
+  }
+  .icon-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .icon-block .size {
+    font-size: 10px;
+    color: #54616a;
+    font-family: "Geist", monospace;
+  }
+  .light-bg .icon-block .size { color: #8a7e6a; }
+
+  .lockup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .lockup-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px dashed #2a2727;
+  }
+  .lockup-row:last-child { border-bottom: none; }
+  .lockup-row img {
+    image-rendering: pixelated;
+    flex-shrink: 0;
+  }
+  .lockup-row .size-tag {
+    font-size: 10px;
+    color: #54616a;
+    width: 60px;
+    font-family: "Geist", monospace;
+  }
+  .text-pixel {
+    font-family: "Pixelify Sans", monospace;
+    color: #c5c9c5;
+    font-weight: 500;
+    line-height: 1;
+  }
+  .text-modern {
+    font-family: "Geist", -apple-system, sans-serif;
+    color: #c5c9c5;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .accent { color: #c4b28a; }
+  .stacked {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 32px 0;
+    border-top: 1px dashed #2a2727;
+    margin-top: 24px;
+  }
+  .stacked-label {
+    font-size: 10px;
+    color: #54616a;
+    font-family: "Geist", monospace;
+    margin-bottom: 8px;
+  }
+</style>
+</head>
+<body>
+  <h1>koborin-ai · brand preview</h1>
+  <p class="lead">Live preview of icon variants and lockups. Reference for README / hero / OG / favicon use.</p>
+
+  <h2>icon · variants</h2>
+
+  <div class="card">
+    <div class="label">icon.svg (transparent master) · on dark page</div>
+    <div class="icon-row">
+      <div class="icon-block"><img src="../icon/icon.svg" width="128" height="128"><div class="size">128</div></div>
+      <div class="icon-block"><img src="../icon/icon.svg" width="64" height="64"><div class="size">64</div></div>
+      <div class="icon-block"><img src="../icon/icon.svg" width="32" height="32"><div class="size">32</div></div>
+      <div class="icon-block"><img src="../icon/icon.svg" width="16" height="16"><div class="size">16</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="label">icon-on-dark.svg (with dark fill) · for avatar / OG</div>
+    <div class="icon-row">
+      <div class="icon-block"><img src="../icon/icon-on-dark.svg" width="128" height="128"><div class="size">128</div></div>
+      <div class="icon-block"><img src="../icon/icon-on-dark.svg" width="64" height="64"><div class="size">64</div></div>
+      <div class="icon-block"><img src="../icon/icon-on-dark.svg" width="32" height="32"><div class="size">32</div></div>
+      <div class="icon-block"><img src="../icon/icon-on-dark.svg" width="16" height="16"><div class="size">16</div></div>
+    </div>
+  </div>
+
+  <div class="card light-bg">
+    <div class="label">icon-on-light.svg · for light pages / print / media</div>
+    <div class="icon-row">
+      <div class="icon-block"><img src="../icon/icon-on-light.svg" width="128" height="128"><div class="size">128</div></div>
+      <div class="icon-block"><img src="../icon/icon-on-light.svg" width="64" height="64"><div class="size">64</div></div>
+      <div class="icon-block"><img src="../icon/icon-on-light.svg" width="32" height="32"><div class="size">32</div></div>
+      <div class="icon-block"><img src="../icon/icon-on-light.svg" width="16" height="16"><div class="size">16</div></div>
+    </div>
+  </div>
+
+  <h2>lockup · A primary (Pixelify) / B secondary (Geist)</h2>
+
+  <div class="lockup-grid">
+    <div class="card">
+      <div class="label">A · Pixelify Sans (brand face)</div>
+
+      <div class="lockup-row">
+        <span class="size-tag">hero</span>
+        <img src="../icon/icon.svg" width="96" height="96">
+        <span class="text-pixel" style="font-size: 56px;">koborin<span class="accent">.ai</span></span>
+      </div>
+      <div class="lockup-row">
+        <span class="size-tag">header</span>
+        <img src="../icon/icon.svg" width="48" height="48">
+        <span class="text-pixel" style="font-size: 28px;">koborin<span class="accent">.ai</span></span>
+      </div>
+      <div class="lockup-row">
+        <span class="size-tag">footer</span>
+        <img src="../icon/icon.svg" width="32" height="32">
+        <span class="text-pixel" style="font-size: 18px;">koborin<span class="accent">.ai</span></span>
+      </div>
+
+      <div class="stacked">
+        <div class="stacked-label">stacked (hero / OG)</div>
+        <img src="../icon/icon.svg" width="128" height="128">
+        <span class="text-pixel" style="font-size: 40px;">koborin<span class="accent">.ai</span></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="label">B · Geist Sans (UI voice)</div>
+
+      <div class="lockup-row">
+        <span class="size-tag">hero</span>
+        <img src="../icon/icon.svg" width="96" height="96">
+        <span class="text-modern" style="font-size: 52px;">koborin<span class="accent">.ai</span></span>
+      </div>
+      <div class="lockup-row">
+        <span class="size-tag">header</span>
+        <img src="../icon/icon.svg" width="48" height="48">
+        <span class="text-modern" style="font-size: 26px;">koborin<span class="accent">.ai</span></span>
+      </div>
+      <div class="lockup-row">
+        <span class="size-tag">footer</span>
+        <img src="../icon/icon.svg" width="32" height="32">
+        <span class="text-modern" style="font-size: 16px;">koborin<span class="accent">.ai</span></span>
+      </div>
+
+      <div class="stacked">
+        <div class="stacked-label">stacked (hero / OG)</div>
+        <img src="../icon/icon.svg" width="128" height="128">
+        <span class="text-modern" style="font-size: 38px;">koborin<span class="accent">.ai</span></span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,41 +1,40 @@
 ---
 name: render-brand
-description: Regenerate icon and lockup PNG variants from SVG masters in this brand repo. Trigger on "render brand assets", "regenerate PNGs", "rebuild brand", or after editing any SVG under icon/ or lockup/.
+description: Regenerate the koborin-ai brand files from src/ and fonts/. Trigger after an edit under src/ or fonts/, or when the user says "render brand assets", "regenerate PNGs", or "rebuild brand".
 ---
 
 # render-brand
 
-Regenerates all icon and lockup PNG variants from the SVG masters.
+`node --run build` writes the brand files from `src/` and `fonts/`.
 
 ## When to invoke
 
-- After editing any SVG under `icon/` or `lockup/`
-- When the user says "render brand", "regenerate PNGs", or similar
+- After an edit under `src/` or `fonts/`
+- When the user says "render brand assets", "regenerate PNGs", or "rebuild brand"
 
 ## How to use
 
-Run from the brand repo root:
+From the repository root, run:
 
-```bash
-bash .claude/skills/render-brand/scripts/render-icons.sh
-bash .claude/skills/render-brand/scripts/render-lockups.sh
+```sh
+node --run build
 ```
 
-Both scripts auto-detect the repo root from their own location, so cwd doesn't matter as long as the skill is installed inside the repo.
+Check the tree without writing:
 
-## Requirements
-
-- `rsvg-convert` (`brew install librsvg`) — used for icon PNGs (respects SVG viewBox)
-- `magick` (`brew install imagemagick`) — used to crop / fill bg in lockup PNGs
-- Google Chrome at `/Applications/Google Chrome.app` — used for lockup PNGs (loads Google Fonts via @import)
+```sh
+node --run check
+```
 
 ## Output
 
-- `icon/png/{transparent,on-dark,on-light}/{16..1024}.png` (14 PNGs)
-- `lockup/{pixel,modern}/png/{transparent,on-dark,on-light}/{stacked,horizontal}@{1,2,4}x.png` (36 PNGs)
+The generator owns these directories. A file placed in one of them by hand is deleted on the next build.
 
-## Notes
+- `mark/`
+- `lockup/`
+- `icon/`
+- `avatar/`
+- `ogp/`
+- `preview/`
 
-- Don't use ImageMagick for the icon SVG itself — it ignores viewBox
-- Lockup SVGs require font-size in **user units** (e.g. `32`, not `32px`) so that text scales together with the icon
-- The scripts wipe the target PNG dirs before regenerating, so manual edits inside `png/` are lost on rerun
+`archive/` and `process/` are not generated.
