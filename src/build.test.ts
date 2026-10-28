@@ -15,7 +15,7 @@ const repoRoot = fileURLToPath(new URL("..", import.meta.url));
 
 const SENTINELS = {
   "README.md": "SENTINEL_README",
-  "CLAUDE.md": "SENTINEL_CLAUDE",
+  "AGENTS.md": "SENTINEL_AGENTS",
 } as const satisfies Record<DocFile, string>;
 
 function fixtureDocs(): { readonly [K in DocFile]: string } {

@@ -18,7 +18,7 @@ type DocumentSpec = {
 
 export const DOCUMENTS = [
   { path: "README.md", regions: ["hero", "palette", "typography", "assets"] },
-  { path: "CLAUDE.md", regions: ["palette", "typography", "assets"] },
+  { path: "AGENTS.md", regions: ["palette", "typography", "assets"] },
 ] as const satisfies readonly DocumentSpec[];
 
 export type DocFile = (typeof DOCUMENTS)[number]["path"];

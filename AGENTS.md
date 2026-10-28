@@ -1,4 +1,4 @@
-# CLAUDE.md
+# AGENTS.md
 
 Context for `koborin-ai/brand`, the visual identity for the org.
 
