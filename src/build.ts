@@ -4,6 +4,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 
 import { WORDMARK } from "./brand.ts";
 import {
+  DOCUMENTS,
   isPublicPath,
   plan,
   type DesiredTree,
@@ -29,10 +30,8 @@ function parseMode(argv: readonly string[]): Mode {
 
 async function readInputs(root: URL): Promise<Inputs> {
   const wordmarkFont = new Uint8Array(await readFile(fileIn(root, WORDMARK.fontFile)));
-  const docs: Record<DocFile, string> = {
-    "README.md": await readFile(fileIn(root, "README.md"), "utf8"),
-    "CLAUDE.md": await readFile(fileIn(root, "CLAUDE.md"), "utf8"),
-  };
+  const docs = {} as { [K in DocFile]: string };
+  for (const doc of DOCUMENTS) docs[doc.path] = await readFile(fileIn(root, doc.path), "utf8");
   return { wordmarkFont, docs };
 }
 
