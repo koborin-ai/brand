@@ -9,43 +9,25 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { loadArtwork } from "./artwork.ts";
 import { WORDMARK } from "./brand.ts";
 import { sync } from "./build.ts";
-import { plan, type Inputs } from "./tree.ts";
+import { DOCUMENTS, plan, type DocFile, type Inputs } from "./tree.ts";
 
 const repoRoot = fileURLToPath(new URL("..", import.meta.url));
 
-const README_FIXTURE = `SENTINEL_README
+const SENTINELS = {
+  "README.md": "SENTINEL_README",
+  "AGENTS.md": "SENTINEL_AGENTS",
+} as const satisfies Record<DocFile, string>;
 
-<!-- brand:hero -->
-OLD_INSIDE
-<!-- /brand:hero -->
-
-<!-- brand:palette -->
-OLD_INSIDE
-<!-- /brand:palette -->
-
-<!-- brand:typography -->
-OLD_INSIDE
-<!-- /brand:typography -->
-
-<!-- brand:assets -->
-OLD_INSIDE
-<!-- /brand:assets -->
-`;
-
-const CLAUDE_FIXTURE = `SENTINEL_CLAUDE
-
-<!-- brand:palette -->
-OLD_INSIDE
-<!-- /brand:palette -->
-
-<!-- brand:typography -->
-OLD_INSIDE
-<!-- /brand:typography -->
-
-<!-- brand:assets -->
-OLD_INSIDE
-<!-- /brand:assets -->
-`;
+function fixtureDocs(): { readonly [K in DocFile]: string } {
+  const docs = {} as { [K in DocFile]: string };
+  for (const doc of DOCUMENTS) {
+    const body = doc.regions
+      .map((region) => `<!-- brand:${region} -->\nOLD_INSIDE\n<!-- /brand:${region} -->`)
+      .join("\n\n");
+    docs[doc.path] = `${SENTINELS[doc.path]}\n\n${body}\n`;
+  }
+  return docs;
+}
 
 const RETIRED = [
   "#7fb4ca",
@@ -76,7 +58,7 @@ async function fontBytes(): Promise<Uint8Array> {
 async function inputs(): Promise<Inputs> {
   return {
     wordmarkFont: await fontBytes(),
-    docs: { "README.md": README_FIXTURE, "CLAUDE.md": CLAUDE_FIXTURE },
+    docs: fixtureDocs(),
   };
 }
 
@@ -84,8 +66,8 @@ async function makeRepo(): Promise<URL> {
   const dir = await mkdtemp(path.join(tmpdir(), "brand-"));
   await mkdir(path.join(dir, "fonts/geist-mono"), { recursive: true });
   await copyFile(path.join(repoRoot, WORDMARK.fontFile), path.join(dir, WORDMARK.fontFile));
-  await writeFile(path.join(dir, "README.md"), README_FIXTURE);
-  await writeFile(path.join(dir, "CLAUDE.md"), CLAUDE_FIXTURE);
+  const docs = fixtureDocs();
+  for (const doc of DOCUMENTS) await writeFile(path.join(dir, doc.path), docs[doc.path]);
   return pathToFileURL(`${dir}${path.sep}`);
 }
 
@@ -126,12 +108,11 @@ test("a stray file in mark is deleted and prose outside the markers survives", a
     await writeFile(path.join(dir, "mark/stray.txt"), "stray");
     assert.deepEqual(await sync(root, "write"), [{ change: "delete", path: "mark/stray.txt" }]);
     await assert.rejects(readFile(path.join(dir, "mark/stray.txt")));
-    const readme = await readFile(path.join(dir, "README.md"), "utf8");
-    assert.equal(readme.includes("SENTINEL_README"), true);
-    assert.equal(readme.includes("OLD_INSIDE"), false);
-    const claude = await readFile(path.join(dir, "CLAUDE.md"), "utf8");
-    assert.equal(claude.includes("SENTINEL_CLAUDE"), true);
-    assert.equal(claude.includes("OLD_INSIDE"), false);
+    for (const doc of DOCUMENTS) {
+      const text = await readFile(path.join(dir, doc.path), "utf8");
+      assert.equal(text.includes(SENTINELS[doc.path]), true, doc.path);
+      assert.equal(text.includes("OLD_INSIDE"), false, doc.path);
+    }
   } finally {
     await rm(dir, { recursive: true, force: true });
   }
@@ -176,10 +157,10 @@ test("loadArtwork rejects the wordmark font when usWeightClass is 400", async ()
 });
 
 test("retired words stay out of the docs", async () => {
-  for (const name of ["README.md", "CLAUDE.md"]) {
-    const text = (await readFile(path.join(repoRoot, name), "utf8")).toLowerCase();
+  for (const doc of DOCUMENTS) {
+    const text = (await readFile(path.join(repoRoot, doc.path), "utf8")).toLowerCase();
     for (const token of RETIRED) {
-      assert.equal(text.includes(token.toLowerCase()), false, `${name} contains ${token}`);
+      assert.equal(text.includes(token.toLowerCase()), false, `${doc.path} contains ${token}`);
     }
   }
 });
