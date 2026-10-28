@@ -8,7 +8,20 @@ import {
 
 export type Family = "mark" | "lockup" | "icon" | "avatar" | "ogp" | "preview";
 export type PublicPath = `${Family}/${string}`;
-export type DocFile = "README.md" | "CLAUDE.md";
+
+type Region = "hero" | "palette" | "typography" | "assets";
+
+type DocumentSpec = {
+  readonly path: string;
+  readonly regions: readonly Region[];
+};
+
+export const DOCUMENTS = [
+  { path: "README.md", regions: ["hero", "palette", "typography", "assets"] },
+  { path: "CLAUDE.md", regions: ["palette", "typography", "assets"] },
+] as const satisfies readonly DocumentSpec[];
+
+export type DocFile = (typeof DOCUMENTS)[number]["path"];
 export type RepoPath = PublicPath | DocFile;
 
 export type Inputs = {
@@ -22,7 +35,6 @@ export type DesiredTree = {
 };
 
 type ArtworkFile = { readonly path: PublicPath; readonly picture: Picture; readonly format: Format };
-type Region = "hero" | "palette" | "typography" | "assets";
 
 const SVG: Format = { kind: "svg" };
 const png = (height: number): Format => ({ kind: "png", height });
@@ -49,19 +61,12 @@ const ARTWORK: readonly ArtworkFile[] = [
   { path: "ogp/default.png", picture: OG, format: png(LAYOUT.og.height) },
 ];
 
-const DOC_REGIONS: Record<DocFile, readonly Region[]> = {
-  "README.md": ["hero", "palette", "typography", "assets"],
-  "CLAUDE.md": ["palette", "typography", "assets"],
-};
-
-const DOC_FILES = ["README.md", "CLAUDE.md"] as const satisfies readonly DocFile[];
-
 export function plan(inputs: Inputs): DesiredTree {
   const art = loadArtwork(inputs.wordmarkFont);
   const files = new Map<RepoPath, Uint8Array>();
   for (const file of ARTWORK) files.set(file.path, art.render(file.picture, file.format));
   files.set("preview/index.html", textEncoder.encode(previewHtml()));
-  for (const doc of DOC_FILES) files.set(doc, textEncoder.encode(spliceRegions(doc, inputs.docs[doc])));
+  for (const doc of DOCUMENTS) files.set(doc.path, textEncoder.encode(spliceRegions(doc.path, inputs.docs[doc.path])));
   return { files, owned: ownedFamilies(files) };
 }
 
@@ -136,8 +141,15 @@ function isRegion(value: string): value is Region {
   }
 }
 
+function regionsOf(doc: DocFile): readonly Region[] {
+  for (const entry of DOCUMENTS) {
+    if (entry.path === doc) return entry.regions;
+  }
+  throw new Error(`${doc}: not registered`);
+}
+
 function isDocRegion(doc: DocFile, value: string): value is Region {
-  return isRegion(value) && DOC_REGIONS[doc].includes(value);
+  return isRegion(value) && regionsOf(doc).includes(value);
 }
 
 function spliceRegions(doc: DocFile, text: string): string {
@@ -150,7 +162,7 @@ function spliceRegions(doc: DocFile, text: string): string {
     bucket.set(marker.region, marker);
   }
   const spans: { readonly region: Region; readonly start: number; readonly end: number }[] = [];
-  for (const region of DOC_REGIONS[doc]) {
+  for (const region of regionsOf(doc)) {
     const openMarker = open.get(region);
     const closeMarker = close.get(region);
     if (openMarker === undefined || closeMarker === undefined || closeMarker.index < openMarker.index) {
